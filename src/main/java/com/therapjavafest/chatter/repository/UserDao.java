@@ -11,5 +11,5 @@ public interface UserDao {
 
     public void saveUser(User user);
 
-    public User findUserByUserName(String userName);
+    public User findUserByEmailAddress(String emailAddress);
 }
