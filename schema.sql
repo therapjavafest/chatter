@@ -6,4 +6,12 @@ CREATE TABLE IF NOT EXISTS `User` (
   `password`      VARCHAR(20) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY (`email_address`)
-)
+);
+
+CREATE TABLE IF NOT EXISTS chatters (
+  id           INT PRIMARY KEY AUTO_INCREMENT,
+  chatter_text VARCHAR(140) NOT NULL,
+  created      DATETIME     NOT NULL,
+  created_by   INT          NOT NULL,
+  CONSTRAINT fk_created_by FOREIGN KEY (created_by) REFERENCES User (id)
+);
