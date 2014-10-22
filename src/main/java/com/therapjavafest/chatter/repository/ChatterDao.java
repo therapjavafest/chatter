@@ -11,5 +11,6 @@ import java.util.List;
  */
 public interface ChatterDao {
     public List<Chatter> findChatters();
+
     public void save(Chatter chatter);
 }

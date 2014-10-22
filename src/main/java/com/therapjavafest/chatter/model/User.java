@@ -1,11 +1,13 @@
 package com.therapjavafest.chatter.model;
 
+import java.io.Serializable;
+
 /**
  * Created by A N M Bazlur Rahman
  *
  * @since 10/21/14.
  */
-public class User {
+public class User implements Serializable{
     private int id;
     private String firstName;
     private String lastName;

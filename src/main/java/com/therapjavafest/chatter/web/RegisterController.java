@@ -1,5 +1,7 @@
 package com.therapjavafest.chatter.web;
 
+import com.therapjavafest.chatter.util.Constants;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,17 +10,15 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import static com.therapjavafest.chatter.util.Constants.*;
-
 /**
- * @author Bazlur Rahman Rokon
- * @since 10/20/14.
+ * @author Rony Gomes
+ * @since 1.0
  */
-@WebServlet(HOME_PAGE_URL)
-public class HomeController extends HttpServlet {
 
+@WebServlet(REGISTER_PAGE_URL)
+public class RegisterController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("plain/text");
-        resp.getOutputStream().println("Hello world!");
+        req.getRequestDispatcher(Constants.VIEWS_ROOT + "register.jsp").forward(req, resp);
     }
 }
