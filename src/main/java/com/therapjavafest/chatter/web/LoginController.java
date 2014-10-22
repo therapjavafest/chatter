@@ -46,9 +46,6 @@ public class LoginController extends HttpServlet {
         User currentUser = userService.verifyUser(createUser(email, password));
         if (isAuthenticatedUser(currentUser)) {
             AuthenticationHelper.login(req, currentUser);
-
-            ChatterService chatterService = new ChatterServiceImpl();
-            req.setAttribute("chatters", chatterService.getChatters());
             resp.sendRedirect(HOME_PAGE_URL);
         } else {
             req.setAttribute("login_failed", "Invalid username/password");

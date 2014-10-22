@@ -4,7 +4,7 @@ import com.therapjavafest.chatter.model.User;
 
 import javax.servlet.http.HttpServletRequest;
 
-import static com.therapjavafest.chatter.util.Constants.LOGGED_IN_USER_SESSION_KEY;
+import static com.therapjavafest.chatter.util.Constants.*;
 
 /**
  * @author Rony Gomes
@@ -18,5 +18,9 @@ public class AuthenticationHelper {
 
     public static void logout(HttpServletRequest request) {
         request.getSession(true).removeAttribute(LOGGED_IN_USER_SESSION_KEY);
+    }
+
+    public static boolean isLoggedIn(HttpServletRequest request) {
+        return request.getSession(true).getAttribute(LOGGED_IN_USER_SESSION_KEY) != null;
     }
 }
