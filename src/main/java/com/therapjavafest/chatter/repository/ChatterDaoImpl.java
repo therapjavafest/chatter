@@ -13,12 +13,12 @@ import java.util.List;
  * @author Rony Gomes
  * @since 1.0
  */
-public class ChatterDaoImpl implements ChatterDao{
+public class ChatterDaoImpl implements ChatterDao {
     private static final String FIND_QUERY = "SELECT * FROM chatters";
     private static final String INSERT_QUERY = "INSERT INTO chatters (chatter_text, created, created_by) VALUES(?, ?, ?)";
 
     @Override
-    public List<Chatter> findChatters() {
+    public List<Chatter> getChatters() {
         return DatabaseTemplate.<Chatter>queryForObject(FIND_QUERY, chatterRowMapper);
     }
 

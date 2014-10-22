@@ -1,9 +1,11 @@
 package com.therapjavafest.chatter.web;
 
 import com.therapjavafest.chatter.model.User;
+import com.therapjavafest.chatter.service.ChatterService;
+import com.therapjavafest.chatter.service.ChatterServiceImpl;
 import com.therapjavafest.chatter.service.UserService;
 import com.therapjavafest.chatter.service.UserServiceImpl;
-import com.therapjavafest.chatter.util.Constants;
+import com.therapjavafest.chatter.util.AuthenticationHelper;
 import com.therapjavafest.chatter.validator.LoginValidator;
 
 import javax.servlet.ServletException;
@@ -43,9 +45,13 @@ public class LoginController extends HttpServlet {
         UserService userService = new UserServiceImpl();
         User currentUser = userService.verifyUser(createUser(email, password));
         if (isAuthenticatedUser(currentUser)) {
-            storeUserInSession(req, currentUser);
+            AuthenticationHelper.login(req, currentUser);
+
+            ChatterService chatterService = new ChatterServiceImpl();
+            req.setAttribute("chatters", chatterService.getChatters());
             resp.sendRedirect(HOME_PAGE_URL);
         } else {
+            req.setAttribute("login_failed", "Invalid username/password");
             req.getRequestDispatcher(LOGIN_VIEW_PATH).forward(req, resp);
         }
     }
@@ -59,9 +65,5 @@ public class LoginController extends HttpServlet {
         user.setEmailAddress(email);
         user.setPassword(password);
         return user;
-    }
-
-    private void storeUserInSession(HttpServletRequest request, User user) {
-        request.getSession(true).setAttribute(LOGGED_IN_USER_SESSION_KEY, user);
     }
 }

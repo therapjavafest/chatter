@@ -1,16 +1,13 @@
-package com.therapjavafest.chatter.repository;
+package com.therapjavafest.chatter.service;
 
 import com.therapjavafest.chatter.model.Chatter;
 
-import java.sql.SQLException;
 import java.util.List;
 
 /**
  * @author Rony Gomes
  * @since 1.0
  */
-public interface ChatterDao {
+public interface ChatterService {
     public List<Chatter> getChatters();
-
-    public void save(Chatter chatter);
 }
