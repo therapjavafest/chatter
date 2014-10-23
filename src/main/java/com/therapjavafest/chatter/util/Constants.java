@@ -20,4 +20,7 @@ public class Constants {
     public static final String LOGIN_VIEW_PATH = VIEWS_ROOT + LOGIN_VIEW_NAME;
     public static final String REGISTER_VIEW_PATH = VIEWS_ROOT + REGISTER_VIEW_NAME;
     public static final String HOME_VIEW_PATH = VIEWS_ROOT + HOME_VIEW_NAME;
+
+    public static final String EMAIL_PATTERN = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?";
+
 }

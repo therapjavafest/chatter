@@ -13,4 +13,5 @@ public interface UserService {
 
     public User verifyUser(User user);
 
+    public boolean isEmailAddressAlreadyExist(String emailAddress);
 }

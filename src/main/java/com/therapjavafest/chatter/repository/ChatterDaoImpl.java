@@ -28,7 +28,7 @@ public class ChatterDaoImpl implements ChatterDao {
                                             chatter.getCreatedBy().getId());
     }
 
-    private static final ObjectRowMapper chatterRowMapper = new ObjectRowMapper<Chatter>() {
+    private static final ObjectRowMapper<Chatter> chatterRowMapper = new ObjectRowMapper<Chatter>() {
         @Override
         public Chatter mapRowToObject(ResultSet resultSet) throws SQLException {
 

@@ -13,6 +13,18 @@ public class User implements Serializable{
     private String lastName;
     private String emailAddress;
     private String password;
+    private String passwordConfirmed;
+
+    public User() {
+    }
+
+    public User(String firstName, String lastName, String emailAddress, String password, String passwordConfirmed) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.emailAddress = emailAddress;
+        this.password = password;
+        this.passwordConfirmed = passwordConfirmed;
+    }
 
     public int getId() {
         return id;
@@ -52,5 +64,13 @@ public class User implements Serializable{
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPasswordConfirmed() {
+        return passwordConfirmed;
+    }
+
+    public void setPasswordConfirmed(String passwordConfirmed) {
+        this.passwordConfirmed = passwordConfirmed;
     }
 }

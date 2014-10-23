@@ -1,6 +1,7 @@
 package com.therapjavafest.chatter.validator;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
 /**
  * @author Rony Gomes

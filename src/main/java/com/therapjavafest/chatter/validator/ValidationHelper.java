@@ -1,5 +1,7 @@
 package com.therapjavafest.chatter.validator;
 
+import static com.therapjavafest.chatter.util.Constants.EMAIL_PATTERN;
+
 /**
  * @author Rony Gomes
  * @since 1.0
@@ -7,7 +9,8 @@ package com.therapjavafest.chatter.validator;
 public class ValidationHelper {
 
     public static boolean isValidEmail(String email) {
-        return true;
+
+        return email.matches(EMAIL_PATTERN);
     }
 
     public static boolean isNotEmpty(String text) {

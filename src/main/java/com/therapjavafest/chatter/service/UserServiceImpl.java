@@ -34,4 +34,10 @@ public class UserServiceImpl implements UserService {
 
         return null;
     }
+
+    @Override
+    public boolean isEmailAddressAlreadyExist(String emailAddress) {
+
+        return userDao.findUserByEmailAddress(emailAddress) != null;
+    }
 }
