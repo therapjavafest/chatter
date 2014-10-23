@@ -14,8 +14,10 @@ import java.util.List;
  * @since 1.0
  */
 public class ChatterDaoImpl implements ChatterDao {
-    private static final String FIND_QUERY = "SELECT * FROM chatters";
-    private static final String INSERT_QUERY = "INSERT INTO chatters (chatter_text, created, created_by) VALUES(?, ?, ?)";
+    private static final String FIND_QUERY = "SELECT c.id, c.chatter_text, c.created, c.created_by, u.first_name, u.last_name " +
+                                             "FROM chatters AS c, User AS u " +
+                                             "ORDER BY c.created DESC";
+    private static final String INSERT_QUERY = "INSERT INTO chatters (chatter_text, created, created_by) VALUES (?, NOW(), ?)";
 
     @Override
     public List<Chatter> getChatters() {
@@ -24,8 +26,7 @@ public class ChatterDaoImpl implements ChatterDao {
 
     @Override
     public void save(Chatter chatter) {
-        DatabaseTemplate.executeInsertQuery(INSERT_QUERY, chatter.getText(), chatter.getCreated(),
-                                            chatter.getCreatedBy().getId());
+        DatabaseTemplate.executeInsertQuery(INSERT_QUERY, chatter.getText(), chatter.getCreatedBy().getId());
     }
 
     private static final ObjectRowMapper<Chatter> chatterRowMapper = new ObjectRowMapper<Chatter>() {
@@ -39,9 +40,14 @@ public class ChatterDaoImpl implements ChatterDao {
 
             User user = new User();
             user.setId(resultSet.getInt("created_by"));
+            user.setFirstName(resultSet.getString("first_name"));
+            user.setLastName(resultSet.getString("last_name"));
             chatter.setCreatedBy(user);
 
             return chatter;
         }
     };
 }
+
+
+//SELECT c.id, c.chatter_text, c.created, c.created_by, u.first_name, u.last_name FROM chatters AS c, User AS u ORDER BY c.created DESC

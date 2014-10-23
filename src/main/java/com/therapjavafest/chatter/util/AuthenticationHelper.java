@@ -23,4 +23,8 @@ public class AuthenticationHelper {
     public static boolean isLoggedIn(HttpServletRequest request) {
         return request.getSession(true).getAttribute(LOGGED_IN_USER_SESSION_KEY) != null;
     }
+
+    public static User getCurrentUser(HttpServletRequest request) {
+        return (User) request.getSession(true).getAttribute(LOGGED_IN_USER_SESSION_KEY);
+    }
 }

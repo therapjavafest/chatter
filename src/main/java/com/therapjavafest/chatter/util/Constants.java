@@ -7,6 +7,7 @@ package com.therapjavafest.chatter.util;
 public class Constants {
     public static final String VIEWS_ROOT = "./WEB-INF/views/";
     public static final String LOGGED_IN_USER_SESSION_KEY = "loggedInUser";
+    public static final String SUCCESS_CHATTER_SAVE_SESSION_KEY = "successChatterSave";
 
     public static final String LOGIN_PAGE_URL = "/login";
     public static final String LOGOUT_PAGE_URL = "/logout";
