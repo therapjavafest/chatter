@@ -13,7 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static com.therapjavafest.chatter.util.Constants.*;
+import static com.therapjavafest.chatter.util.Constants.HOME_PAGE_URL;
+import static com.therapjavafest.chatter.util.Constants.HOME_VIEW_PATH;
 
 /**
  * @author Bazlur Rahman Rokon
@@ -33,38 +34,26 @@ public class HomeController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if (AuthenticationHelper.isLoggedIn(req)) {
-            if (req.getSession().getAttribute(SUCCESS_CHATTER_SAVE_SESSION_KEY) != null) {
-                req.setAttribute("success.save.chatter", "Chatter successfully saved.");
-                req.getSession().removeAttribute(SUCCESS_CHATTER_SAVE_SESSION_KEY);
-            }
-            req.setAttribute("chatters", chatterService.getChatters());
-            req.getRequestDispatcher(HOME_VIEW_PATH).forward(req, resp);
-        } else {
-            resp.sendRedirect(LOGIN_PAGE_URL);
-        }
+
+        req.setAttribute("chatters", chatterService.getChatters());
+        req.getRequestDispatcher(HOME_VIEW_PATH).forward(req, resp);
+
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if (AuthenticationHelper.isLoggedIn(req)) {
-            String chatter = req.getParameter(CHATTER_PARAMETER);
+        String chatter = req.getParameter(CHATTER_PARAMETER);
 
-            if (ValidationHelper.isEmpty(chatter)) {
-                req.setAttribute("chatterError", "This chatter appears to be blank. Please write something.");
-                req.getRequestDispatcher(HOME_VIEW_PATH).forward(req, resp);
+        if (ValidationHelper.isEmpty(chatter)) {
+            req.setAttribute("chatterError", "This chatter appears to be blank. Please write something.");
+            req.getRequestDispatcher(HOME_VIEW_PATH).forward(req, resp);
 
-                return;
-            }
+            return;
+        }
 
-            if (chatterService.save(createChatter(req, chatter))) {
-                req.getSession().setAttribute(SUCCESS_CHATTER_SAVE_SESSION_KEY, true);
-                resp.sendRedirect(HOME_PAGE_URL);
-            } else {
+        if (chatterService.save(createChatter(req, chatter))) {
 
-            }
-        } else {
-            resp.sendRedirect(LOGIN_PAGE_URL);
+            resp.sendRedirect(HOME_PAGE_URL);
         }
     }
 

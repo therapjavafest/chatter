@@ -13,18 +13,14 @@ import static com.therapjavafest.chatter.util.Constants.*;
 public class AuthenticationHelper {
 
     public static void login(HttpServletRequest request, User user) {
-        request.getSession(true).setAttribute(LOGGED_IN_USER_SESSION_KEY, user);
+        request.getSession(true).setAttribute(AUTH_KEY, user);
     }
 
     public static void logout(HttpServletRequest request) {
-        request.getSession(true).removeAttribute(LOGGED_IN_USER_SESSION_KEY);
-    }
-
-    public static boolean isLoggedIn(HttpServletRequest request) {
-        return request.getSession(true).getAttribute(LOGGED_IN_USER_SESSION_KEY) != null;
+        request.getSession(true).removeAttribute(AUTH_KEY);
     }
 
     public static User getCurrentUser(HttpServletRequest request) {
-        return (User) request.getSession(true).getAttribute(LOGGED_IN_USER_SESSION_KEY);
+        return (User) request.getSession(true).getAttribute(AUTH_KEY);
     }
 }
