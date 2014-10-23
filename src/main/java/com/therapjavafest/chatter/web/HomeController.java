@@ -1,10 +1,10 @@
 package com.therapjavafest.chatter.web;
 
 import com.therapjavafest.chatter.model.Chatter;
-import com.therapjavafest.chatter.model.User;
 import com.therapjavafest.chatter.service.ChatterService;
 import com.therapjavafest.chatter.service.ChatterServiceImpl;
 import com.therapjavafest.chatter.util.AuthenticationHelper;
+import com.therapjavafest.chatter.validator.ValidationHelper;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Date;
 
 import static com.therapjavafest.chatter.util.Constants.*;
 
@@ -50,6 +49,14 @@ public class HomeController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (AuthenticationHelper.isLoggedIn(req)) {
             String chatter = req.getParameter(CHATTER_PARAMETER);
+
+            if (ValidationHelper.isEmpty(chatter)) {
+                req.setAttribute("chatterError", "This chatter appears to be blank. Please write something.");
+                req.getRequestDispatcher(HOME_VIEW_PATH).forward(req, resp);
+
+                return;
+            }
+
             if (chatterService.save(createChatter(req, chatter))) {
                 req.getSession().setAttribute(SUCCESS_CHATTER_SAVE_SESSION_KEY, true);
                 resp.sendRedirect(HOME_PAGE_URL);
