@@ -10,4 +10,5 @@ import java.util.List;
  */
 public interface ChatterService {
     public List<Chatter> getChatters();
+    public boolean save(Chatter chatter);
 }
