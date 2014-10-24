@@ -7,21 +7,12 @@
 <meta charset="UTF-8" />
 <title>Home :: Chatter</title>
 
-    <link rel="stylesheet" href="<c:url value="/resources/css/bootstrap.min.css"/>"/>
-    <link rel="stylesheet" href="<c:url value="/resources/css/bootstrap-theme.min.css"/>"/>
-    <link rel="stylesheet" href="<c:url value="/resources/css/main.css"/>"/>
-    <script type="text/javascript" src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
+    <jsp:include page="WEB-INF/views/fragments/headTag.jsp"/>
+
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <ul class="nav nav-pills pull-right">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-            <h3 class="text-muted">Chatter</h3>
-        </div>
+       <jsp:include page="WEB-INF/views/fragments/bodyHeader.jsp"/>
 
         <div class="jumbotron">
             <h1>Hello world</h1>
@@ -54,9 +45,7 @@
             </div>
         </div>
 
-        <div class="footer">
-            <p>&copy; Therap Services LLC, 2014</p>
-        </div>
+        <jsp:include page="WEB-INF/views/fragments/footer.jsp"/>
     </div> <!-- /container -->
 </body>
 </html>
