@@ -16,7 +16,7 @@ import java.util.List;
 public class ChatterDaoImpl implements ChatterDao {
     private static final String FIND_QUERY = "SELECT c.id, c.chatter_text, c.created, c.created_by, u.first_name, u.last_name " +
                                              "FROM chatters AS c " +
-                                             "JOIN User AS u " +
+                                             "JOIN users AS u " +
                                              "ON c.created_by = u.id " +
                                              "ORDER BY c.created DESC";
     private static final String INSERT_QUERY = "INSERT INTO chatters (chatter_text, created, created_by) VALUES (?, NOW(), ?)";
