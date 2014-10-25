@@ -16,10 +16,12 @@ public class Constants {
     private static final String LOGIN_VIEW_NAME = "login.jsp";
     private static final String REGISTER_VIEW_NAME = "register.jsp";
     private static final String HOME_VIEW_NAME = "home.jsp";
+    private static final String ERROR_VIEW_NAME = "exception.jsp";
 
     public static final String LOGIN_VIEW_PATH = VIEWS_ROOT + LOGIN_VIEW_NAME;
     public static final String REGISTER_VIEW_PATH = VIEWS_ROOT + REGISTER_VIEW_NAME;
     public static final String HOME_VIEW_PATH = VIEWS_ROOT + HOME_VIEW_NAME;
+    public static final String ERROR_VIEW_PATH = VIEWS_ROOT + ERROR_VIEW_NAME;
 
     public static final String EMAIL_PATTERN = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?";
 

@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS `User` (
+CREATE TABLE IF NOT EXISTS `users` (
   `id`            INT         NOT NULL AUTO_INCREMENT,
   `first_name`    VARCHAR(20) NOT NULL,
   `last_name`     VARCHAR(20) NOT NULL,
@@ -13,5 +13,5 @@ CREATE TABLE IF NOT EXISTS chatters (
   chatter_text VARCHAR(140) NOT NULL,
   created      DATETIME     NOT NULL,
   created_by   INT          NOT NULL,
-  CONSTRAINT fk_created_by FOREIGN KEY (created_by) REFERENCES User (id)
+  CONSTRAINT fk_created_by FOREIGN KEY (created_by) REFERENCES users (id)
 );

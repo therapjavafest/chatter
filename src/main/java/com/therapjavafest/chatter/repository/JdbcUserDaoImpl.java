@@ -16,14 +16,14 @@ public class JdbcUserDaoImpl implements UserDao {
 
     @Override
     public void saveUser(User user) {
-        DatabaseTemplate.executeInsertQuery("INSERT INTO User (first_name, last_name, email_address, password) VALUES (?,?,?,?)",
+        DatabaseTemplate.executeInsertQuery("INSERT INTO users (first_name, last_name, email_address, password) VALUES (?,?,?,?)",
                 user.getFirstName(), user.getLastName(), user.getEmailAddress(), user.getPassword());
     }
 
     @Override
     public User findUserByEmailAddress(String emailAddress) {
 
-        List<User> users = DatabaseTemplate.queryForObject("select * from User where email_address = '" + emailAddress + "'", new ObjectRowMapper<User>() {
+        List<User> users = DatabaseTemplate.queryForObject("select * from users where email_address = '" + emailAddress + "'", new ObjectRowMapper<User>() {
             @Override
             public User mapRowToObject(ResultSet resultSet) throws SQLException {
                 User user = new User();

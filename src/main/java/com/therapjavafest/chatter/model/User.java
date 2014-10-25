@@ -73,4 +73,10 @@ public class User implements Serializable{
     public void setPasswordConfirmed(String passwordConfirmed) {
         this.passwordConfirmed = passwordConfirmed;
     }
+
+    @Override
+    public String toString() {
+
+        return firstName + " " + lastName;
+    }
 }

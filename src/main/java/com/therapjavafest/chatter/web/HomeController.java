@@ -5,6 +5,8 @@ import com.therapjavafest.chatter.service.ChatterService;
 import com.therapjavafest.chatter.service.ChatterServiceImpl;
 import com.therapjavafest.chatter.util.AuthenticationHelper;
 import com.therapjavafest.chatter.validator.ValidationHelper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

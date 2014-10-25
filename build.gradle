@@ -18,6 +18,10 @@ dependencies {
     compile 'c3p0:c3p0:0.9.1.2'
     compile 'mysql:mysql-connector-java:5.1.33'
 
+    // Logging
+    compile 'org.slf4j:slf4j-api:1.7.2'
+    compile 'org.slf4j:slf4j-log4j12:1.7.2'
+
     testCompile 'junit:junit:4.11'
     testCompile 'org.mockito:mockito-all:1.10.8'
 }
