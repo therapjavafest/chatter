@@ -8,7 +8,7 @@ A simple servlet/jsp reference application for therap javafest called chatter.
  
 1. Servlet Container: Apache Tomcat 7  (http://tomcat.apache.org/download-70.cgi)
 2. Build Tool: Gradle (http://www.gradle.org/installation)
-3. Database: Mysql (http://www.apachefriends.org/en/xampp-windows.html)
+3. Database: Mysql (https://www.apachefriends.org/download.html)
 
 
 ## Steps to Run
